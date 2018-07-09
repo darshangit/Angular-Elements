@@ -8,7 +8,7 @@ const concat = require('concat');
         './dist/elements/main.js',
     ]
     await fs.ensureDir('external-build')
-    await concat(files, 'external-build/impulse-ticket.js');
+    await concat(files, 'external-build/imlse-ticket.js');
     await fs.copyFile('./dist/elements/styles.css', 'external-build/styles.css')
     await fs.copy('./dist/elements/assets/', 'external-build/assets/' )
 })()
