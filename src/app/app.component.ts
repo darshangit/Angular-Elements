@@ -14,9 +14,10 @@ export class AppComponent {
   constructor(injector: Injector, domSanitizer: DomSanitizer) {
     const alertElement = createCustomElement(AlertComponentComponent, {injector: injector});
     customElements.define('my-alert', alertElement);
+    // this.content = domSanitizer.bypassSecurityTrustHtml('<my-alert message="redendered dynamically"></my-alert>');
 
-    setTimeout(() => {
-      this.content = domSanitizer.bypassSecurityTrustHtml('<my-alert message="redendered dynamically"></my-alert>');
-    }, 1000);
+    // setTimeout(() => {
+    //   this.content = domSanitizer.bypassSecurityTrustHtml('<my-alert message="redendered dynamically"></my-alert>');
+    // }, 1000);
   }
 }

@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AlertComponentComponent } from './elements/alert-component.component';
+import { createCustomElement } from '@angular/elements';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,17 @@ import { AlertComponentComponent } from './elements/alert-component.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  // bootstrap: [AppComponent],
   entryComponents: [
     AlertComponentComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private injector: Injector) {
+    const firstComponent = createCustomElement(AlertComponentComponent, { injector: this.injector });
+    customElements.define('my-alert', firstComponent);
+ }
+
+ ngDoBootstrap() {}
+}
